@@ -6,20 +6,30 @@
     <title>fetch: eigene .json fetchen</title>
 
     <script>
-    async function fetchDataJson() {
-    let response = await fetch ('db.json')             //Ein 'fetch' besteht immer aus einer url!
-    let responseAsJson = await response.json();        //Wenn in der Konsole ein 'pending' erscheint, sollte man mal versuchen ein 'await' einzusetzen
-    console.log(responseAsJson);
+
+fruit = {
+    "genus": "Fragaria",
+    "name": "Ashberry",
+    "family": "Rosaceae",
+    "order": "Rosales",
+    "nutritions": {
+        "carbonhydrates": 5.5,
+        "protein": 0,
+        "fat": 0.4,
+        "calories": 29,
+        "sugar": 5.4
+    }
 }
-    async function fetchDataText() {
-    let response = await fetch ('h1.txt')             
-    let responseAsText = await response.text();        
-    document.getElementById('content').innerHTML = responseAsText
+
+    async function fetchDataJson() {
+    let response = await fetch ('https://cors-anywhere.herokuapp.com/https://www.fruityvice.com/api/fruit/cherry');             
+    let responseAsJson = await response.json();        
+    console.log(responseAsJson);
 }
 
     </script>
 </head>
-<body onload="fetchDataText()">
+<body onload="fetchDataJson()">
     <div id="content"></div>
 </body>
 </html>
